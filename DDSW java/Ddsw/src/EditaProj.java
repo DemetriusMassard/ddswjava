@@ -22,40 +22,40 @@ public class EditaProj extends JFrame implements ActionListener{
 public EditaProj() {
 
 
-	setBounds(100, 50, 600, 600);
+	setBounds(100, 50, 600, 550);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setLayout(null);
 	
 	btntarefas = new JButton("Tarefas");
-	btntarefas.setBounds(270, 520, 100, 35);
+	btntarefas.setBounds(220, 470, 100, 35);
 	btntarefas.addActionListener(this);
 	add (btntarefas);
 	
 	btnexcluir = new JButton("Excluir");
-	btnexcluir.setBounds(370, 520, 100, 35);
+	btnexcluir.setBounds(340, 470, 100, 35);
 	btnexcluir.addActionListener(this);
 	add (btnexcluir);
 	
 	btnincluir = new JButton("Incluir");
-	btnincluir.setBounds(470, 520, 100, 35);
+	btnincluir.setBounds(460, 470, 100, 35);
 	btnincluir.addActionListener(this);
 	add (btnincluir);
 	
 	
 	lblnome = new JLabel ("Nome");
-	lblnome.setBounds(10, 5, 100, 45);
+	lblnome.setBounds(15, 5, 100, 45);
 	add (lblnome);
 	
 	lblempresa = new JLabel ("Empresa");
-	lblempresa.setBounds(10, 75, 100, 45);
+	lblempresa.setBounds(15, 75, 100, 45);
 	add (lblempresa);
 	
 	lblemail = new JLabel ("Email");
-	lblemail.setBounds(10, 145, 100, 45);
+	lblemail.setBounds(15, 145, 100, 45);
 	add (lblemail);
 	
 	lblnomedoproj = new JLabel ("Nome do Projeto");
-	lblnomedoproj.setBounds(10, 220, 100, 45);
+	lblnomedoproj.setBounds(15, 220, 100, 45);
 	add (lblnomedoproj);
 		
 	lblobsadc = new JLabel ("Obs. adicionanais");
@@ -63,19 +63,19 @@ public EditaProj() {
 	add (lblobsadc);
 	
 	txtnome = new JTextField ();
-	txtnome.setBounds(10, 45, 250, 30);
+	txtnome.setBounds(15, 45, 350, 30);
 	add (txtnome);
 	
 	txtempresa = new JTextField ();
-	txtempresa.setBounds(10, 115, 250, 30);
+	txtempresa.setBounds(15, 115, 350, 30);
 	add (txtempresa);
 	
 	txtemail = new JTextField ();
-	txtemail.setBounds(10, 185, 250, 30);
+	txtemail.setBounds(15, 185, 350, 30);
 	add (txtemail);
 	
 	txtnomedoproj = new JTextField ();
-	txtnomedoproj.setBounds(10, 255, 250, 30);
+	txtnomedoproj.setBounds(15, 255, 350, 30);
 	add (txtnomedoproj);
 	
 	txtobsadc = new JTextField ();

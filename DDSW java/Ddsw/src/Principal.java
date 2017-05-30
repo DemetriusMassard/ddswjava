@@ -13,12 +13,12 @@ public class Principal extends JFrame implements ActionListener{
 	
 public Principal() {
 
-	setBounds(100, 50, 303, 300);
+	setBounds(100, 50, 300, 250);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setLayout(null);
 	
 	btnLogin = new JButton("Login");
-	btnLogin.setBounds(20, 200, 100, 35);
+	btnLogin.setBounds(100, 150, 100, 35);
 	btnLogin.addActionListener(this);
 	add (btnLogin);
 	
@@ -32,11 +32,11 @@ public Principal() {
 	add (lblsenha);
 	
 	txtnome = new JTextField ();
-	txtnome.setBounds(20, 45, 250, 20);
+	txtnome.setBounds(20, 45, 250, 25);
 	add (txtnome);
 	
 	txtsenha = new JTextField ();
-	txtsenha.setBounds(20, 113, 250, 20);
+	txtsenha.setBounds(20, 113, 250, 25);
 	add (txtsenha);
 	setResizable(false);
 	getContentPane().setBackground(Color.LIGHT_GRAY);
