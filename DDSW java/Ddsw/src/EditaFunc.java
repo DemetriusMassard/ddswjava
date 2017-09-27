@@ -1,9 +1,14 @@
 import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+import java.awt.event.ActionListener; 
+import java.sql.*;
 
-public class EditaFunc extends JFrame implements ActionListener{
+import javax.swing.*;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+
+
+public class EditaFunc extends JInternalFrame implements ActionListener{
 	
 	private JButton btnincluir;
 	private JButton btnexcluir;
@@ -22,11 +27,18 @@ public class EditaFunc extends JFrame implements ActionListener{
 	private JTextField txtemail;
 	private JTextField txtrg;
 	
-public EditaFunc() {
+public EditaFunc(){
+	super("Editar Funcionario", false,true,false);
+	addInternalFrameListener(new InternalFrameAdapter() {
+		public void internalFrameClosing(InternalFrameEvent e){
 
+			dispose();
+		}
+	});
 	setBounds(100, 50, 525, 300);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setLayout(null);
+	
 	
 	btnincluir = new JButton("Incluir");
 	btnincluir.setBounds(275, 230, 100, 35);
@@ -54,7 +66,7 @@ public EditaFunc() {
 	lblnumero.setBounds(150, 75, 100, 45);
 	add (lblnumero);
 		
-	lblcomplemento = new JLabel ("Complento");
+	lblcomplemento = new JLabel ("Complemento");
 	lblcomplemento.setBounds(350, 75, 120, 45);
 	add (lblcomplemento);
 	
@@ -98,14 +110,53 @@ public EditaFunc() {
 	getContentPane().setBackground(Color.LIGHT_GRAY);
 	setVisible(true);
 	}
+
+public void actionPerformed(ActionEvent e) {
+	String nome = txtnome.getText();
+	double cpf = Double.parseDouble(txtcpf.getText());
+	String cep = txtcep.getText();
+	String num = txtnumero.getText();
+	String copm = txtcomplemento.getText();
+	String email = txtemail.getText();
+	String rg = txtrg.getText();
+	
+	
+	if (e.getSource()== btnincluir ){
+		try{
+			
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/ddsw","root","");
+			String sql = "insert into func (Nome,CPF,CEP,num,comp,Email,RG) VALUES (?,?,?,?,?,?,?)";
+			PreparedStatement smt = conn.prepareStatement(sql);
+			smt.setString(1,nome );
+			smt.setDouble(2,cpf );
+			smt.setString(3,cep );
+			smt.setString(4,num );
+			smt.setString(5,copm );
+			smt.setString(6,email );
+			smt.setString(7,rg );
+			smt.execute();
+			smt.close();
+			JOptionPane.showMessageDialog(null,"Salvo com sucesso");
+		}catch(SQLException e1){
+			JOptionPane.showMessageDialog(null,"erro"+ e1.getMessage());
+		}
 		
-	public static void main(String[] args) {
-		EditaFunc prin = new EditaFunc();
-		prin.setVisible(true);
 	}
-
-
-public void actionPerformed(ActionEvent arg0) {
+	if (e.getSource()== btnexcluir ){
+		try{
+			
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/ddsw","root","");
+			String sql = "DELETE FROM func WHERE cpf=(?)";
+			PreparedStatement smt = conn.prepareStatement(sql);
+			smt.setDouble(1,cpf );
+			smt.execute();
+			smt.close();
+			JOptionPane.showMessageDialog(null,"Excluido com sucesso");
+		}catch(SQLException e1){
+			JOptionPane.showMessageDialog(null,"erro"+ e1.getMessage());
+		}
+		
+	}
 	
 }
 }
