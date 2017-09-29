@@ -1,22 +1,22 @@
-import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javaBeans.BeansProjeto;
+
+import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-public class CadastroLogin extends JInternalFrame implements ActionListener{
+import sun.applet.Main;
+import dao.DaoContatos;
+import dao.Daoprojeto;
+
+	public class CadastroLogin extends JFrame implements ActionListener{
 
 		private JButton btnCadastra;
 		private JLabel lblCpf;
@@ -29,7 +29,7 @@ public class CadastroLogin extends JInternalFrame implements ActionListener{
 		private JTextField txtConfSenha;
 		
 		public CadastroLogin() {
-			super("Cadastro Login", false,true,false);
+			super("Cadastro Login");
 	    	addInternalFrameListener(new InternalFrameAdapter() {
 	    		public void internalFrameClosing(InternalFrameEvent e){
 
@@ -37,46 +37,46 @@ public class CadastroLogin extends JInternalFrame implements ActionListener{
 	    		}
 			});
 		
-			setBounds(100, 50, 390, 400);
+			setBounds(100, 50, 300, 400);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setLayout(null);
 			
 			btnCadastra = new JButton("Cadastra");
-			btnCadastra.setBounds(265, 300, 100, 35);
+			btnCadastra.setBounds(150, 300, 100, 35);
 			btnCadastra.addActionListener(this);
 			add (btnCadastra);
 			
 			
 			lblCpf = new JLabel ("Cpf");
-			lblCpf.setBounds(15, 5, 100, 45);
+			lblCpf.setBounds(20, 25, 100, 45);
 			add (lblCpf);
 			
-			lblLogin = new JLabel ("Senha");
-			lblLogin.setBounds(15, 75, 100, 45);
+			lblLogin = new JLabel ("Login");
+			lblLogin.setBounds(20, 85, 100, 45);
 			add (lblLogin);
 			
 			lblSenha = new JLabel ("Senha");
-			lblSenha.setBounds(15, 145, 100, 45);
+			lblSenha.setBounds(20, 145, 100, 45);
 			add (lblSenha);
 			
-			lblConfSenha = new JLabel ("Senha");
-			lblConfSenha.setBounds(15, 220, 100, 45);
+			lblConfSenha = new JLabel ("Confimar Senha");
+			lblConfSenha.setBounds(20, 205, 100, 45);
 			add (lblConfSenha);
 			
 			txtCpf = new JTextField ();
-			txtCpf.setBounds(15, 45, 350, 30);
+			txtCpf.setBounds(20, 60, 250, 25);
 			add (txtCpf);
 
-			txtLogin = new JTextField();
-			txtLogin.setBounds(15, 115, 350, 30);
+			txtLogin = new JPasswordField();
+			txtLogin.setBounds(20, 120, 250, 25);
 			add (txtLogin);
 			
 			txtSenha = new JPasswordField();
-			txtSenha.setBounds(15, 185, 350, 30);
+			txtSenha.setBounds(20, 180, 250, 25);
 			add (txtSenha);
 			
 			txtConfSenha = new JPasswordField();
-			txtConfSenha.setBounds(15, 255, 350, 30);
+			txtConfSenha.setBounds(20, 240, 250, 25);
 			add (txtConfSenha);
 			
 			
@@ -85,6 +85,11 @@ public class CadastroLogin extends JInternalFrame implements ActionListener{
 			setResizable(false);
 			getContentPane().setBackground(Color.LIGHT_GRAY);
 			setVisible(true);
+		}
+		private void addInternalFrameListener(
+				InternalFrameAdapter internalFrameAdapter) {
+		
+			
 		}
 		public void actionPerformed(ActionEvent AE) {
 			

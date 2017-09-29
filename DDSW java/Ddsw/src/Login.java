@@ -78,7 +78,7 @@ public class Login extends JFrame implements ActionListener{
 			try {
 				login.setSenha(md5(txtsenha.getText()));
 			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DaoLogin dao = new DaoLogin();
